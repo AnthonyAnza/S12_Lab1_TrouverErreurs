@@ -23,8 +23,11 @@ namespace Mission.Controllers
         // GET: Produits
         public async Task<IActionResult> Index()
         {
+            var produit = await _context.Produits
+                .Include(p => p.Categorie)
+                .ToListAsync();
             // COMPLÉTER ICI
-            return View();
+            return View(produit);
         }
 
     }
