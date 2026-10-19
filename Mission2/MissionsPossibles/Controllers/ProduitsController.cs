@@ -23,8 +23,13 @@ namespace Mission.Controllers
         // GET: Produits
         public async Task<IActionResult> Index()
         {
+            // Récupère les produits depuis la base de données.
+            // Include charge également la catégorie associée à chaque produit.
+
+            var produit = await _context.Produits.Include(p => p.Categorie)
+                .ToListAsync();
             // COMPLÉTER ICI
-            return View();
+            return View(produit);
         }
 
     }
