@@ -6,8 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+//Faire attention au get connection string, il faut que le nom soit le même que celui dans appsettings.json
 builder.Services.AddDbContext<MissionDbContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+options.UseSqlServer(builder.Configuration.GetConnectionString("Mission3Connection")));
+
 
 
 
