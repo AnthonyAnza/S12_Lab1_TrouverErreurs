@@ -47,6 +47,7 @@ namespace Mission.Controllers
         // GET: Categories/Create
         public IActionResult Create()
         {
+            
             return View();
         }
 

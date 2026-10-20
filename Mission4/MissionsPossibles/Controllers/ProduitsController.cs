@@ -49,7 +49,7 @@ namespace Mission.Controllers
         // GET: Produits/Create
         public IActionResult Create()
         {
-         
+            ViewBag.CategorieList = new SelectList(_context.Categories.OrderBy(c => c.Titre).ToList(), "Id", "Titre",null);
             return View();
         }
 
@@ -66,7 +66,7 @@ namespace Mission.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-           
+            ViewBag.CategorieList = new SelectList(_context.Categories.OrderBy(c => c.Titre).ToList(), "Id", "Titre",produit.CategorieId);
             return View(produit);
         }
 
