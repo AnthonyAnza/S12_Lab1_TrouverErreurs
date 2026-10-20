@@ -49,6 +49,7 @@ namespace Mission.Controllers
         // GET: Produits/Create
         public IActionResult Create()
         {
+            // REMPLIR LE SELECT LIST AVANT DE RETOURNER LA VUE
             Produit_VM produit_VM = new Produit_VM();
             produit_VM.CategorieList = _context.Categories.OrderBy(c => c.Titre).Select(i => new SelectListItem
             {
@@ -71,7 +72,12 @@ namespace Mission.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-         
+            // REMPLIR LE SELECT LIST AVANT DE RETOURNER LA VUE
+            produit_VM.CategorieList = _context.Categories.OrderBy(c => c.Titre).Select(i => new SelectListItem
+            {
+                Text = i.Titre,
+                Value = i.Id.ToString()
+            });
             return View(produit_VM);
         }
 

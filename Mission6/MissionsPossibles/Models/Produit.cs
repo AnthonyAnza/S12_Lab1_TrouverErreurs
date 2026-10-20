@@ -18,8 +18,9 @@ namespace Mission.Models
         public decimal PrixVente { get; set; }
         [ForeignKey("Categorie")]
         public int CategorieId { get; set; }
-      
-     
+
+        //AJOUTER VALIDATE NEVER SI CREATE NE CLIQUE PAS 
+        [ValidateNever]
         public Categorie Categorie { get; set; }
 
 
